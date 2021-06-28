@@ -6,17 +6,19 @@
 namespace App\Libraries;
 
 class Core {
-    protected  $currentController='Pages'; //default controller
+    protected  $currentController="Pages"; //default controller
     protected  $currentMethod='index'; //default method
     protected  $params=array();
 
     public function __construct(){
         $url=$this->getUrl();
         //controller
-        if(isset($url[0])&&file_exists('../app/Controllers/'. ucwords($url[0]))){
+        if(isset($url[0])&&file_exists('../app/Controllers/'. ucwords($url[0]).".php")){
             $this->currentController=ucwords($url[0]);
+
         }
         require_once('../app/Controllers/'.$this->currentController.".php");
+
         $this->currentController = new $this->currentController;
         unset($url[0]);
 
@@ -40,7 +42,5 @@ class Core {
             $url=filter_var($url, FILTER_SANITIZE_URL);
             return explode('/',$url);
         }
-
-
     }
 }

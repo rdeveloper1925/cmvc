@@ -1,9 +1,12 @@
 <?php
-class Pages{
+
+use App\Libraries\Controller;
+class Pages extends Controller
+{
     public function index(){
-        echo 'index';
+        $this->view('index',['welcome'=>"Helloooo"]);
     }
-    public function view($id){
-        echo $id;
+    public function show($id){
+        echo "pages view ".$id;
     }
 }

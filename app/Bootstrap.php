@@ -1,8 +1,6 @@
 <?php
 namespace App;
 use App\Libraries\Core;
-
-require_once 'Libraries/Core.php';
-
+//Kickstarting the core class responsible for routing
 $m=new Core();
 
